@@ -21,8 +21,9 @@
     .done(function(response) {
       console.log(response.data);
       for (var i = 0; i < 10; i++){
-        console.log(response.data[i].images.fixed_height_still);
-        console.log(response.data[i].rating);
+        console.log("THIS IS STILL " + response.data[i].images.fixed_height_still.url);
+        console.log("THIS IS A GIF "+response.data[i].images.fixed_height.url);
+        //console.log(response.data[i].rating);
         }
       });
 

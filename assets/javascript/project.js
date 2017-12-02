@@ -28,7 +28,8 @@ function renderButtons(){
 
 
 	$("button").on("click", function(){
-		
+
+
 		var sport = $(this).attr("data-name");
 		console.log(sport);
 		var queryURL = "https://api.giphy.com/v1/gifs/search?q="+ sport +"&rating=pg&api_key=dc6zaTOxFJmzC&limit=10";
@@ -47,12 +48,15 @@ function renderButtons(){
       	var sportImage = $("<img>");
       	
       	sportImage.attr("src",response.data[i].images.fixed_height_still.url);
+      	sportImage.attr("data-still", response.data[i].images.fixed_height_still.url);
+      	sportImage.attr("data-animate", response.data[i].images.fixed_height.url);
+      	sportImage.attr("data-state", "still").addClass("gif");
       	sportDiv.append(p);
       	
       	sportDiv.append(sportImage);
       	$("#gifs-appear-here").prepend(sportDiv);
       
-        console.log(response.data[i].images.fixed_height_still);
+        console.log(response.data[i].images.fixed_height);
         }
       });
 
