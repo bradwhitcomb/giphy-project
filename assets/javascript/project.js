@@ -58,11 +58,23 @@ function renderButtons(){
       
         console.log(response.data[i].images.fixed_height);
         }
-      });
+      
 
+	
+
+	$(".gif").on("click", function(){
+
+		var state = $(this).attr("data-state");
+		if (state === "still"){
+			$(this).attr("src",$(this).attr("data-animate"));
+			$(this).attr("data-state","animate");
+		} else{
+			$(this).attr("src", $(this).attr("data-still"));
+			$(this).attr("data-state", "still");	
+		}
 	});	
-	//renderButtons();
-
+	});
+	});
 	//event.preventDefault();
 
 //renderButtons();
