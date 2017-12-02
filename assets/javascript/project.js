@@ -1,6 +1,7 @@
 console.log("hello world of giphy");
 
-var topics = ["surfing", "skateboarding", "hang gliding", "snowboarding","parachuting","jet ski"];
+var topics = ["surfing", "skateboarding", "hang gliding", "snowboarding","parachuting","jet ski","ice fishing","wind surfing",
+"zorbing","blobbing","xpogo","mountain boarding","barefooting","parasailing","white water rafting","BMX"];
 //build a loop to create buttons
 
 
@@ -24,8 +25,24 @@ function renderButtons(){
 	} 
 	
 }
-	renderButtons()
+	renderButtons();
 
+
+	$("#add-newSport").on("click", function(event) {
+        // event.preventDefault() prevents the form from trying to submit itself.
+        // We're using a form so that the user can hit enter instead of clicking the button if they want
+        event.preventDefault();
+
+        // This line will grab the text from the input box
+        var newSport = $("#newSport-input").val().trim();
+        // The movie from the textbox is then added to our array
+        topics.push(newSport);
+        console.log("after push the new array is " + topics);
+
+        // calling renderButtons which handles the processing of our movie array
+        renderButtons();
+      });
+		
 
 	$("button").on("click", function(){
 
@@ -43,8 +60,9 @@ function renderButtons(){
       
       for (var i = 0; i < 10; i++){
       	var sportDiv = $("<div>");
+
       	var p = $("<p>").text("Rating: "+ response.data[i].rating);
-      	console.log(p);
+      	
       	var sportImage = $("<img>");
       	
       	sportImage.attr("src",response.data[i].images.fixed_height_still.url);
@@ -62,20 +80,22 @@ function renderButtons(){
 
 	
 
-	$(".gif").on("click", function(){
+		$(".gif").on("click", function(){
 
-		var state = $(this).attr("data-state");
-		if (state === "still"){
-			$(this).attr("src",$(this).attr("data-animate"));
-			$(this).attr("data-state","animate");
-		} else{
-			$(this).attr("src", $(this).attr("data-still"));
-			$(this).attr("data-state", "still");	
-		}
-	});	
+			var state = $(this).attr("data-state");
+			if (state === "still"){
+				$(this).attr("src",$(this).attr("data-animate"));
+				$(this).attr("data-state","animate");
+			} else{
+				$(this).attr("src", $(this).attr("data-still"));
+				$(this).attr("data-state", "still");	
+				}
+			});	
+		});
 	});
-	});
+
+	
 	//event.preventDefault();
 
-//renderButtons();
+	//renderButtons();
 
