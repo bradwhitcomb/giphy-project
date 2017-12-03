@@ -6,7 +6,7 @@ var topics = ["surfing", "skateboarding", "hang gliding", "snowboarding","parach
 
 function alertSportName(){
 	var sportName = $(this).attr("data-name");
-	alert(sportName);
+
 }
 
 
@@ -101,7 +101,7 @@ function renderButtons(){
 
 	$(document).on("click",".sport",alertSportName);
 	//renderButtons();	
-	//event.preventDefault();
+	
 
-	//renderButtons();
+	
 
