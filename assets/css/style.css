@@ -1,5 +1,7 @@
 body {
-	background-color: white;
+	background-image: url(../../assets/images/images-2.jpg);
+	back
+
 }
 
 .sport{
@@ -7,19 +9,20 @@ body {
 	color: red;
 	border: groove silver 15px;
 }
-.gif{
-	border:solid red 5px;
+.gif{ 
+	border:solid #fdb813 5px;
 }
 #gifs-appear-here{
 	border: ridge grey 25px;
-	background-color: silver;
+	background-color: #7f7fff;
 }
-p {
-	color: peru;
-	font-size: 50px;
-	}
+
+	
+	
+	
 form {
 	background-color: blue;
+	width:75px;
 }
 #add-newSport {
 	color:white;
@@ -33,6 +36,15 @@ form {
 	margin-right: 318px;
 }
 
-		
+p {
+	color:white;
+	font-size: 35px;
+	opacity:.5;
 
+}		
+h1 {
+	color: red;
+	background-color: black;
+	text-align:center;
+}
 

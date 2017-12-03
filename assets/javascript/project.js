@@ -1,8 +1,13 @@
 console.log("hello world of giphy");
 
 var topics = ["surfing", "skateboarding", "hang gliding", "snowboarding","parachuting","jet ski","ice fishing","wind surfing",
-"zorbing","blobbing","xpogo","mountain boarding","barefooting","parasailing","white water rafting","BMX"];
+"zorbing","blobbing","xpogo","mountain boarding","barefooting","parasailing","BMX"];
 //build a loop to create buttons
+
+function alertSportName(){
+	var sportName = $(this).attr("data-name");
+	alert(sportName);
+}
 
 
 function renderButtons(){
@@ -94,7 +99,8 @@ function renderButtons(){
 		});
 	});
 
-	
+	$(document).on("click",".sport",alertSportName);
+	//renderButtons();	
 	//event.preventDefault();
 
 	//renderButtons();
