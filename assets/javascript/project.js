@@ -1,19 +1,21 @@
 console.log("hello world of giphy");
 
-var topics = ["surfing", "skateboarding", "hang gliding", "snowboarding","parachuting","jet ski","ice fishing","wind surfing",
-"zorbing","blobbing","xpogo","mountain boarding","barefooting","parasailing","BMX"];
-//build a loop to create buttons
 
+//initial array of sports
+var topics = ["surfing", "skateboarding", "hang gliding", "snowboarding","parachuting","jet ski","ice fishing","wind surfing",
+"zorbing","blobbing","xpogo","mountain boarding","parasailing","BMX"];
+//build a loop to create buttons
+//needed for the input button to add new sport
 function alertSportName(){
 	var sportName = $(this).attr("data-name");
 
 }
 
-
+//builds buttons
 function renderButtons(){
-
+//resets buttons so as not to repeat button on every build
 	$("#topics-view").empty();
-
+//loops through the array to build buttons
 	for (var i = 0;i < topics.length; i++)
 	{
 
@@ -32,7 +34,7 @@ function renderButtons(){
 }
 	renderButtons();
 
-
+	//takes input form and converts to new sport
 	$("#add-newSport").on("click", function(event) {
         // event.preventDefault() prevents the form from trying to submit itself.
         // We're using a form so that the user can hit enter instead of clicking the button if they want
@@ -46,41 +48,42 @@ function renderButtons(){
 
         // calling renderButtons which handles the processing of our movie array
         renderButtons();
-      });
+     });
 		
 
-	$("button").on("click", function(){
+	$(document).on("click", "button", function(){
 
 
 		var sport = $(this).attr("data-name");
 		console.log(sport);
 		var queryURL = "https://api.giphy.com/v1/gifs/search?q="+ sport +"&rating=pg&api_key=dc6zaTOxFJmzC&limit=10";
 
-    $.ajax({
-      url: queryURL,
-      method: 'GET'
-    })
-    .done(function(response) {
-      console.log(response.data);
-      
-      for (var i = 0; i < 10; i++){
-      	var sportDiv = $("<div>");
+    	$.ajax({
+      	url: queryURL,
+      	method: 'GET'
+    	})
 
-      	var p = $("<p>").text("Rating: "+ response.data[i].rating);
+    	.done(function(response) {
+      	console.log(response.data);
+      
+      	for (var i = 0; i < 10; i++){
+      		var sportDiv = $("<div>");
+
+      		var p = $("<p>").text("Rating: "+ response.data[i].rating);
       	
-      	var sportImage = $("<img>");
+      		var sportImage = $("<img>");
       	
-      	sportImage.attr("src",response.data[i].images.fixed_height_still.url);
-      	sportImage.attr("data-still", response.data[i].images.fixed_height_still.url);
-      	sportImage.attr("data-animate", response.data[i].images.fixed_height.url);
-      	sportImage.attr("data-state", "still").addClass("gif");
-      	sportDiv.append(p);
+	      	sportImage.attr("src",response.data[i].images.fixed_height_still.url);
+	      	sportImage.attr("data-still", response.data[i].images.fixed_height_still.url);
+	      	sportImage.attr("data-animate", response.data[i].images.fixed_height.url);
+	      	sportImage.attr("data-state", "still").addClass("gif");
+	      	sportDiv.append(p);
       	
-      	sportDiv.append(sportImage);
-      	$("#gifs-appear-here").prepend(sportDiv);
+      		sportDiv.append(sportImage);
+      		$("#gifs-appear-here").prepend(sportDiv);
       
         console.log(response.data[i].images.fixed_height);
-        }
+        	}
       
 
 	
@@ -92,6 +95,7 @@ function renderButtons(){
 				$(this).attr("src",$(this).attr("data-animate"));
 				$(this).attr("data-state","animate");
 			} else{
+
 				$(this).attr("src", $(this).attr("data-still"));
 				$(this).attr("data-state", "still");	
 				}
